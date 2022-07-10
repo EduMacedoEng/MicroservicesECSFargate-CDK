@@ -1,12 +1,34 @@
+buildscript {
+	ext {
+		springBootVersion = '3.0.0-SNAPSHOT'
+	}
+	repositories {
+		mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.22.1')
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'com.palantir.docker' version '0.22.1'
 }
 
-group = 'br.com.eduardo'
+group = 'eduardomacedo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+
+bootJar {
+	baseName = 'aws_udemy_01'
+	version = '1.0.0'
+}
 
 repositories {
 	mavenCentral()
