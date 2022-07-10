@@ -12,6 +12,7 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.22.1')
 	}
+
 }
 
 plugins {
@@ -26,7 +27,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 bootJar {
-	baseName = 'aws_udemy_01'
+	baseName = 'aws_project_01'
 	version = '1.0.0'
 }
 
@@ -39,7 +40,7 @@ docker {
 	name "${project.group}/${bootJar.baseName}"
 	tags "${bootJar.version}"
 	copySpec.from(tasks.unpack.outputs).into("dependency")
-	buildArgs(['Dependency': "dependency"])
+	buildArgs(['DEPENDENCY': "dependency"])
 }
 
 repositories {
@@ -51,9 +52,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }

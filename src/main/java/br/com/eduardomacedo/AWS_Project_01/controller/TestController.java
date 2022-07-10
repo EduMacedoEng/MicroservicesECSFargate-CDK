@@ -1,4 +1,4 @@
-package br.com.eduardo.AWS_Project_01.controller;
+package br.com.eduardomacedo.AWS_Project_01.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
